@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="1114.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.hms_project_team_12.Admin_PatientRegisterController">
+   <children>
+      <VBox prefHeight="702.0" prefWidth="232.0" style="-fx-background-color: #fff;">
+         <children>
+            <AnchorPane prefHeight="136.0" prefWidth="210.0" style="-fx-background-color: transparent;">
+               <children>
+                  <ImageView fitHeight="71.0" fitWidth="69.0" layoutX="61.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="36.0" layoutY="92.0" text="ABC HOSPITAL">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="137.0" prefHeight="71.0" prefWidth="210.0">
+               <children>
+                  <Button fx:id="btn_createDoctor" defaultButton="true" graphicTextGap="12.0" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="201.0" style="-fx-border-radius: 5px; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: Arial; -fx-background-color: #fff; -fx-text-fill: #2B3467; -fx-alignment: left; -fx-padding: 0px 15px;" text="Create Doctor">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                     <graphic>
+<!--                        <FontAwesomeIconView fill="#2b3467" glyphName="PLUS" size="24" />-->
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="146.0" prefHeight="71.0" prefWidth="210.0">
+               <children>
+                  <Button fx:id="btn_createPatient" defaultButton="true" graphicTextGap="12.0" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="202.0" style="-fx-border-radius: 5px; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: Arial; -fx-background-color: #ededed; -fx-text-fill: #2B3467; -fx-alignment: left; -fx-padding: 0px 15px;" text="Create Patient">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                     <graphic>
+<!--                        <FontAwesomeIconView fill="#2b3467" glyphName="PLUS" size="24" />-->
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="146.0" prefHeight="71.0" prefWidth="210.0">
+               <children>
+                  <Button fx:id="btn_getDoctors" defaultButton="true" graphicTextGap="12.0" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="202.0" style="-fx-border-radius: 5px; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: Arial; -fx-background-color: #fff; -fx-text-fill: #2B3467; -fx-alignment: left; -fx-padding: 0px 15px;" text="Doctors">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+<!--                        <FontAwesomeIconView fill="#2b3467" glyphName="LIST" size="24" />-->
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="288.0" prefHeight="71.0" prefWidth="210.0">
+               <children>
+                  <Button fx:id="btn_getPatients" defaultButton="true" graphicTextGap="12.0" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="202.0" style="-fx-border-radius: 5px; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: Arial; -fx-background-color: #fff; -fx-text-fill: #2B3467; -fx-alignment: left; -fx-padding: 0px 15px;" text="Patients">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+<!--                        <FontAwesomeIconView fill="#2b3467" glyphName="LIST" size="24" />-->
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="360.0" prefHeight="71.0" prefWidth="210.0">
+               <children>
+                  <Button fx:id="btn_logout" defaultButton="true" graphicTextGap="12.0" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="202.0" style="-fx-border-radius: 5px; -fx-font-family: Open Sans; -fx-font-size: 20px; -fx-font-weight: 900; -fx-background-color: #2B3467; -fx-text-fill: #fff; -fx-alignment: left; -fx-padding: 0px 15px;" text="Logout">
+                     <font>
+                        <Font name="Bauhaus 93" size="10.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+<!--                        <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" size="24" />-->
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <VBox prefHeight="702.0" prefWidth="886.0">
+         <children>
+            <AnchorPane prefHeight="70.0" prefWidth="862.0" style="-fx-background-color: #2B3467;">
+               <children>
+                  <Label layoutX="30.0" layoutY="18.0" prefHeight="38.0" prefWidth="244.0" style="-fx-text-fill: #fff;" text="Create Patient" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="" prefHeight="630.0" prefWidth="856.0" style="-fx-background-color: #d4d5d6; -fx-min-width: 100%;">
+               <children>
+                  <Label layoutX="85.0" layoutY="25.0" style="-fx-font-size: 20px;" text="Account Type : ">
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="230.0" layoutY="27.0" text="Patient">
+                     <font>
+                        <Font name="Arial Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="85.0" layoutY="70.0" text="First Name * ">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="492.0" layoutY="70.0" text="Last Name ">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_firstname" layoutX="85.0" layoutY="99.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-radius: 5px;">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="tf_lastname" layoutX="492.0" layoutY="99.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-radius: 5px;">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="85.0" layoutY="151.0" text="Email *">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="492.0" layoutY="151.0" text="Phone Number *">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_email" layoutX="85.0" layoutY="180.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-radius: 5px;">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="tf_phone" layoutX="492.0" layoutY="180.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-radius: 5px;">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="85.0" layoutY="228.0" text="Date Of Birth *">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="d_dateofbirth" layoutX="85.0" layoutY="255.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-radius: 5px;" />
+                  <Label layoutX="492.0" layoutY="228.0" text="NIC *">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_nic" layoutX="492.0" layoutY="257.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-radius: 5px;">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="85.0" layoutY="307.0" text="Address">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="492.0" layoutY="307.0" text="Gender *">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_address" layoutX="85.0" layoutY="336.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-radius: 5px;">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+                  <ComboBox fx:id="cb_gender" layoutX="492.0" layoutY="336.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-color: #fff; -fx-border-radius: 5px;" />
+                  <Label layoutX="85.0" layoutY="417.0" text="Password * : ">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="button_register" alignment="CENTER" contentDisplay="CENTER" layoutX="631.0" layoutY="508.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="178.0" style="-fx-background-color: #2B3467; -fx-cursor: hand; -fx-font-family: Arial Rounded MT Bold; -fx-font-size: 20px; -fx-font-weight: 700;" text="Register" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="button_reset" alignment="CENTER" contentDisplay="CENTER" layoutX="489.0" layoutY="506.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="123.0" style="-fx-border-color: #2B3467; -fx-cursor: hand; -fx-background-color: #fff; -fx-border-radius: 5px; -fx-text-fill: #2b3467; -fx-font-family: Arial Rounded MT Bold; -fx-font-size: 20px;" text="Reset" textFill="#2b3467">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="lable_password" layoutX="194.0" layoutY="410.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #fff; -fx-alignment: left; -fx-min-width: 180px; -fx-padding: 0px 10px;" wrapText="true">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Label>
+                  <Button fx:id="btn_generatePassword" alignment="CENTER" contentDisplay="CENTER" layoutX="372.0" layoutY="408.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #0042f7; -fx-font-size: 18px;" text="Generate Password" textFill="#0042f7" underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</HBox>

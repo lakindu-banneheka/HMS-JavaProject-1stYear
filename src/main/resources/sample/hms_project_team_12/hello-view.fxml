@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.hms_project_team_12.HelloController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: #2B3467;">
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="40.0" layoutX="85.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="36.0" layoutY="186.0" text="ABC HOSPITAL" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="400.0" prefWidth="418.0" style="-fx-background-color: #d4d5d6;">
+         <children>
+            <Label layoutX="48.0" layoutY="39.0" text="Account Type : ">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_email" layoutX="46.0" layoutY="143.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-radius: 5px;">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="48.0" layoutY="200.0" text="Password : ">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_password" layoutX="48.0" layoutY="225.0" prefHeight="35.0" prefWidth="286.0" style="-fx-background-color: #fff; -fx-border-color: #fff; -fx-border-radius: 5px;">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="48.0" layoutY="118.0" text="Email :">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="button_login" layoutX="49.0" layoutY="288.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="286.0" style="-fx-background-color: #2B3467; -fx-cursor: hand;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="lb_not_registered" layoutX="104.0" layoutY="348.0" text="not registered ?  ">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="button_register" layoutX="206.0" layoutY="343.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="register" textFill="#0048ff" underline="true">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="cb_account_type" layoutX="47.0" layoutY="67.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #fff; -fx-border-color: 5px;" />
+         </children></AnchorPane>
+   </children>
+</HBox>
