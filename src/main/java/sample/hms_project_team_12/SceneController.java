@@ -14,6 +14,10 @@ public class SceneController {
     private static Scene scene;
     private static Parent root;
 
+    public enum SceneTitle {
+        ABC_HOSPITAL__LOGIN,
+    }
+
     public static void switchScene(ActionEvent event, String fxmlFile, String title) throws IOException {
 
         try {

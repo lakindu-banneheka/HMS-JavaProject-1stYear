@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import sample.hms_project_team_12.User.Doctor;
 import sample.hms_project_team_12.User.Patient;
 import sample.hms_project_team_12.database.DataBaseConnection;
+import sample.hms_project_team_12.util.AdminControllers;
+import sample.hms_project_team_12.util.Auth;
 import sample.hms_project_team_12.util.CheckboxPopup;
 
 import java.io.IOException;
@@ -39,6 +41,8 @@ public class Admin_PatientsListController implements Initializable {
 
     @FXML
     private Button btn_getPatients;
+    @FXML
+    private Button btn_getAssignments;
     @FXML
     private Button btn_logout;
 
@@ -109,15 +113,16 @@ public class Admin_PatientsListController implements Initializable {
             // MORE Button
             tc_more.setCellFactory(column -> new TableCell<Patient, Void>() {
                 private final Button moreButton = new Button("More");
-
                 {
+                    moreButton.setText("More");
+                    moreButton.setStyle("-fx-background-color: #2B3467; -fx-text-fill: #fff; -fx-cursor: HAND");
                     moreButton.setOnAction(event -> {
-                        Patient doctorSearch = getTableView().getItems().get(getIndex());
-                        int _id = doctorSearch.getUser_id();
+                        Patient patientSearch = getTableView().getItems().get(getIndex());
+                        int _id = patientSearch.getUser_id();
 
                         try {
-                            AdminMoreViewController.setId(_id);
-                            SceneController.switchScene(event, "admin_AdminMore-view.fxml", "ABC Hospital - Admin");
+                            Admin_PatientMoreController.setId(_id);
+                            SceneController.switchScene(event, "admin_patient-more-view.fxml", "ABC Hospital - Admin");
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -146,7 +151,7 @@ public class Admin_PatientsListController implements Initializable {
                 filteredData.setPredicate(patientSearchModule -> {
 
                     // if no search value then display all records or whatever record currently have. no changes
-                    if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                    if(newValue.isEmpty() || newValue.isBlank()){
                         return true;
                     }
 
@@ -191,7 +196,7 @@ public class Admin_PatientsListController implements Initializable {
 
 
         } catch (SQLException e) {
-            Logger.getLogger(Admin_AdminListController.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Admin_PatientsListController.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
         }
 
@@ -204,59 +209,18 @@ public class Admin_PatientsListController implements Initializable {
             }
         });
 
-        //scene builder
-        btn_createDoctor.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"admin_doctor-register-view.fxml","ABC Hospital - Admin");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        // change scenes
+        AdminControllers adminControllers = new AdminControllers();
 
-        btn_createPatient.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"admin_patient-register-view.fxml","ABC Hospital - Admin");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        adminControllers.createDoctorButton(btn_createDoctor);
+        adminControllers.createPatientButton(btn_createPatient);
+        adminControllers.getDoctorsButton(btn_getDoctors);
+        adminControllers.getPatientButton(btn_getPatients);
+        adminControllers.getAppointmentsButton(btn_getAssignments);
 
-        btn_getDoctors.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"admin_doctor-list-view.fxml","ABC Hospital - Admin");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        btn_getPatients.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"admin_patient-list-view.fxml","ABC Hospital - Admin");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        btn_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"hello-view.fxml","ABC Hospital - login");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        // logout
+        Auth auth = new Auth();
+        auth.onClickLogoutButton(btn_logout);
     }
 }
 

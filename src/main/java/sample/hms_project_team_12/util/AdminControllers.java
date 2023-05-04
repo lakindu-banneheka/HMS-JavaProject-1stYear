@@ -1,60 +1,19 @@
-package sample.hms_project_team_12;
+package sample.hms_project_team_12.util;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import sample.hms_project_team_12.User.Admin;
-import sample.hms_project_team_12.database.DataBaseConnection;
+import sample.hms_project_team_12.SceneController;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class AdminMoreViewController implements Initializable {
+public class AdminControllers implements Initializable {
 
-    @FXML
-    private Button btn_createDoctor;
-
-    @FXML
-    private Button btn_createPatient;
-
-    @FXML
-    private Button btn_getDoctors;
-
-    @FXML
-    private Button btn_getPatients;
-    @FXML
-    private Button btn_logout;
-
-
-    static int admin_id;
-
-
-    public void setAdmin_id(int admin_id) {
-        this.admin_id = admin_id;
-    }
-
-    public static void setId(int id) {
-        admin_id = id;
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-        System.out.println("test ID : " + admin_id);
-
-
-
-        //scene builder
+    // create doctor scene - admin
+    public void createDoctorButton(Button btn_createDoctor) {
         btn_createDoctor.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -65,7 +24,10 @@ public class AdminMoreViewController implements Initializable {
                 }
             }
         });
+    }
 
+    // create patient scene - admin
+    public void createPatientButton(Button btn_createPatient) {
         btn_createPatient.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -76,7 +38,10 @@ public class AdminMoreViewController implements Initializable {
                 }
             }
         });
+    }
 
+    // get doctors scene - admin
+    public void getDoctorsButton(Button btn_getDoctors) {
         btn_getDoctors.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -87,6 +52,10 @@ public class AdminMoreViewController implements Initializable {
                 }
             }
         });
+    }
+
+    // get patient scene - admin
+    public void getPatientButton(Button btn_getPatients) {
         btn_getPatients.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -97,16 +66,24 @@ public class AdminMoreViewController implements Initializable {
                 }
             }
         });
-        btn_logout.setOnAction(new EventHandler<ActionEvent>() {
+    }
+
+    // get patient scene - admin
+    public void getAppointmentsButton(Button btn_getAssignments) {
+        btn_getAssignments.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    SceneController.switchScene(event,"hello-view.fxml","ABC Hospital - login");
+                    SceneController.switchScene(event,"admin_appointments-list-view.fxml","ABC Hospital - Admin");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }

@@ -1,8 +1,8 @@
 package sample.hms_project_team_12.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import javafx.scene.control.Alert;
+
+import java.sql.*;
 
 public class DataBaseConnection {
     public Connection databaseLink;
@@ -23,4 +23,5 @@ public class DataBaseConnection {
 
         return databaseLink;
     }
+
 }

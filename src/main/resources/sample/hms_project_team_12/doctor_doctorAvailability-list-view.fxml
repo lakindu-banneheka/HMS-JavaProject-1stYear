@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="1114.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.hms_project_team_12.Doctor_DoctorAvailabilityListController">
+   <children>
+       <VBox prefHeight="702.0" prefWidth="232.0" style="-fx-background-color: #2B3467;">
+           <children>
+               <AnchorPane prefHeight="174.0" prefWidth="230.0" style="-fx-background-color: transparent;">
+                   <children>
+                       <ImageView fitHeight="71.0" fitWidth="69.0" layoutX="76.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@logo.png" />
+                           </image>
+                       </ImageView>
+                       <Label layoutX="42.0" layoutY="92.0" text="ABC HOSPITAL" textFill="WHITE">
+                           <font>
+                               <Font size="21.0" />
+                           </font>
+                       </Label>
+                   </children>
+               </AnchorPane>
+               <AnchorPane layoutX="10.0" layoutY="137.0" prefHeight="71.0" prefWidth="210.0" style="-fx-background-color: transparent;">
+                   <children>
+                       <Button fx:id="btn_myDetails" defaultButton="true" graphicTextGap="12.0" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="201.0" style="-fx-border-radius: 5px; -fx-font-size: 20px; -fx-font-weight: 700; -fx-font-family: Arial; -fx-background-color: transparent; -fx-text-fill: #fff; -fx-alignment: left; -fx-padding: 0px 15px;" text="My Details">
+                           <font>
+                               <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <graphic>
+                           </graphic>
+                           <opaqueInsets>
+                               <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                               <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                               <Icon content="PERSON" />
+                           </graphic>
+                       </Button>
+                   </children>
+               </AnchorPane>
+               <AnchorPane layoutX="10.0" layoutY="146.0" prefHeight="71.0" prefWidth="210.0">
+                   <children>
+                       <Button fx:id="btn_searchPatient" defaultButton="true" graphicTextGap="12.0" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="202.0" style="-fx-border-radius: 5px; -fx-font-size: 20px; -fx-font-weight: 700; -fx-font-family: Arial; -fx-background-color: transparent; -fx-text-fill: #fff; -fx-alignment: left; -fx-padding: 0px 15px;" text="Patient">
+                           <font>
+                               <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <graphic>
+                           </graphic>
+                           <opaqueInsets>
+                               <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                               <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                               <Icon content="PEOPLE" />
+                           </graphic>
+                       </Button>
+                   </children>
+               </AnchorPane>
+               <AnchorPane layoutX="10.0" layoutY="146.0" prefHeight="71.0" prefWidth="210.0">
+                   <children>
+                       <Button fx:id="btn_doctorAvailability" defaultButton="true" graphicTextGap="12.0" layoutX="11.0" layoutY="11.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="202.0" style="-fx-border-radius: 5px; -fx-font-size: 20px; -fx-font-weight: 700; -fx-font-family: Arial; -fx-background-color: #434e8c; -fx-text-fill: #fff; -fx-alignment: left; -fx-padding: 0px 15px;" text="Availability">
+                           <font>
+                               <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <graphic>
+                           </graphic>
+                           <opaqueInsets>
+                               <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                               <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                               <Icon content="ACCESS_TIME" />
+                           </graphic>
+                       </Button>
+                   </children>
+               </AnchorPane>
+               <AnchorPane prefHeight="311.0" prefWidth="230.0" />
+               <AnchorPane layoutX="10.0" layoutY="360.0" prefHeight="71.0" prefWidth="210.0">
+                   <children>
+                       <Button fx:id="btn_logout" alignment="CENTER" defaultButton="true" graphicTextGap="12.0" layoutX="3.0" layoutY="12.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="195.0" style="-fx-border-radius: 5px; -fx-font-family: Open Sans; -fx-font-size: 20px; -fx-font-weight: 700; -fx-background-color: transparent; -fx-text-fill: #fff; -fx-alignment: left; -fx-padding: 0px 15px;" text="Logout">
+                           <font>
+                               <Font name="Bauhaus 93" size="10.0" />
+                           </font>
+                           <opaqueInsets>
+                               <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                               <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                           </graphic>
+                           <graphic>
+                               <Icon content="EXIT_TO_APP" />
+                           </graphic>
+                       </Button>
+                   </children>
+               </AnchorPane>
+           </children>
+       </VBox>
+
+       <VBox prefHeight="702.0" prefWidth="886.0">
+           <AnchorPane prefHeight="70.0" prefWidth="890.0" style="-fx-background-color: #2B3467;">
+               <children>
+                   <Label layoutX="59.0" layoutY="14.0" prefHeight="38.0" prefWidth="288.0" style="-fx-text-fill: #fff;" text="Doctor Availability" textFill="WHITE">
+                       <font>
+                           <Font name="Arial Rounded MT Bold" size="28.0" />
+                       </font>
+                   </Label>
+                   <Button fx:id="button_back" layoutY="15.0" minWidth="39.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="39.0" style="-fx-background-color: transparent;" textFill="WHITE">
+                       <font>
+                           <Font name="Arial Bold" size="24.0" />
+                       </font>
+                       <graphic>
+                           <Icon content="ARROW_BACK" prefHeight="26.0" prefWidth="32.0" />
+                       </graphic>
+                       <cursor>
+                           <Cursor fx:constant="HAND" />
+                       </cursor>
+                   </Button>
+               </children>
+           </AnchorPane>
+           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="237.0" style="-fx-background-color: #fff;">
+               <children>
+                   <Label layoutX="51.0" layoutY="14.0" text="Doctor Availability">
+                       <font>
+                           <Font name="Arial Rounded MT Bold" size="24.0" />
+                       </font>
+                   </Label>
+                   <TextField fx:id="tfDA_search" layoutX="158.0" layoutY="64.0" prefHeight="34.0" prefWidth="401.0" promptText="Search" style="-fx-background-color: #efefef; -fx-border-radius: 5px; -fx-border-color: transparent transparent #91a2ff transparent;">
+                       <font>
+                           <Font name="Arial" size="18.0" />
+                       </font>
+                   </TextField>
+                   <Button fx:id="btn_addAvailability" layoutX="704.0" layoutY="66.0" mnemonicParsing="false" style="-fx-background-color: #2B3467; -fx-border-radius: 5px;" text="Add Availability" textFill="WHITE">
+                       <font>
+                           <Font name="Arial Rounded MT Bold" size="18.0" />
+                       </font>
+                       <cursor>
+                           <Cursor fx:constant="HAND" />
+                       </cursor>
+                   </Button>
+                   <TableView fx:id="table_doctorAvailability" layoutX="11.0" layoutY="117.0" prefHeight="466.0" prefWidth="863.0">
+                       <columns>
+                           <TableColumn fx:id="tcDA_id" prefWidth="75.0" text="ID" />
+                           <TableColumn fx:id="tcDA_date" prefWidth="96.80001068115234" text="Date" />
+                           <TableColumn fx:id="tcDA_time" prefWidth="84.79998779296875" text="Time" />
+                           <TableColumn fx:id="tcDA_isAvailable" prefWidth="88.0" text="Is Available" />
+                           <TableColumn fx:id="tcDA_edit" prefWidth="64.79998779296875" text="Edit" />
+                       </columns>
+                   </TableView>
+               </children>
+           </AnchorPane>
+      </VBox>
+   </children>
+</HBox>

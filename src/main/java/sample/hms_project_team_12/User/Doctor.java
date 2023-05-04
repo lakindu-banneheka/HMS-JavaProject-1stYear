@@ -1,18 +1,36 @@
 package sample.hms_project_team_12.User;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import sample.hms_project_team_12.util.ErrorChecking;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import sample.hms_project_team_12.MedicalRecord.MedicalRecord;
+import sample.hms_project_team_12.database.DataBaseConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Doctor extends User {
-    String specialty;
-    String licenseNumber;
+    private String specialty;
+    private String licenseNumber;
+    private String fullName;
 
     private static AccountType accountType = AccountType.DOCTOR;
     public Doctor(String email) {
         super(email);
+    }
+
+    @Override
+    public User getUserDataById(int user_id) {
+        return null;
+    }
+
+    @Override
+    public void updateUserDataById(User user,int userId) {
+
+    }
+
+    @Override
+    public void createNewUserData() {
+
     }
 
     public Doctor(String firstname, String lastname, String address, String phone, String email, String gender, Date dateOfBirth, String nic, AccountType accountType, String specialty, String licenseNumber) {
@@ -33,6 +51,11 @@ public class Doctor extends User {
         this.licenseNumber = licenseNumber;
     }
 
+    public Doctor(int user_id, String firstname, String lastname, String specialty) {
+        super(user_id, firstname, lastname);
+        this.specialty = specialty;
+    }
+
     // getter
     public String getSpecialty() {
         return specialty;
@@ -42,100 +65,130 @@ public class Doctor extends User {
         return licenseNumber;
     }
 
+    public String getFullName() {
+        return super.getFirstname() + " " + super.getLastname();
+    }
+
+
     // Setter
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public void setLicenseNumber(String licenseNumber) {
-        this.licenseNumber = licenseNumber;
-    }
+    // Doctor get details By Id
+    public static String getNameById (int id){
+        PreparedStatement preparedStatement = null;
+        ResultSet queryOutput = null;
 
+        DataBaseConnection connectNow = new DataBaseConnection();
+        Connection connectDB = connectNow.getDBConnection();
 
-    // Doctor Register & connection with database
-    public static void registerDoctor(ActionEvent event, Doctor doctor, String password){
-        Connection connection = null;
-        PreparedStatement psInsert = null;
-        PreparedStatement psCheckUserExists = null;
-        ResultSet resultSet = null;
-
+        // SQL Query - Executed in the backend database
+        String getDoctorNameByIDQuery = "SELECT * FROM hms.doctor WHERE user_id = ?";
         try {
-            if(ErrorChecking.isValidEmail(doctor.email)) {
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hms", "root", "123");
-                psCheckUserExists = connection.prepareStatement("SELECT * FROM doctor WHERE email = ?");
-                psCheckUserExists.setString(1, doctor.email);
-                resultSet = psCheckUserExists.executeQuery();
+            preparedStatement = connectDB.prepareStatement(getDoctorNameByIDQuery);
+            preparedStatement.setInt(1, id);
+            queryOutput = preparedStatement.executeQuery();
 
+            if (queryOutput.next()) {
+                String queryFirstName = queryOutput.getString("firstname");
+                String queryLastName = queryOutput.getString("lastname");
 
-                if (resultSet.isBeforeFirst()) {
-                    System.out.println("User already exists!");
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("You cannot use this Email!");
-                    alert.show();
-                } else {
-                    psInsert = connection.prepareStatement("INSERT INTO doctor (firstname, lastname, address, phone, email, gender, password, dob, nic, specialty, licenseNumber  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    psInsert.setString(1, doctor.firstname);
-                    psInsert.setString(2, doctor.lastname);
-                    psInsert.setString(3, doctor.address);
-                    psInsert.setString(4, doctor.phone);
-                    psInsert.setString(5, doctor.email);
-                    psInsert.setString(6, String.valueOf(doctor.gender));
-                    psInsert.setString(7, password);
-                    psInsert.setDate(8, doctor.dateOfBirth);
-                    psInsert.setString(9, doctor.nic);
-                    psInsert.setString(10, doctor.specialty);
-                    psInsert.setString(11, doctor.licenseNumber);
-
-                    int r = psInsert.executeUpdate();
-                    if(r > 0){
-                        System.out.println("@DoctorClass registered as a Doctor");
-
-                        System.out.println("Successfully Registered.");
-                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        alert.setContentText("Successfully Registered!");
-                        alert.show();
-                    } else {
-                        System.out.println("error while registering");
-                    }
-                }
+                return queryFirstName + " " + queryLastName;
             }
-
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } finally {
-
-            if (resultSet != null ){
+            if (queryOutput != null) {
                 try {
-                    resultSet.close();
+                    queryOutput.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-
-            if (psCheckUserExists != null ){
+            if (preparedStatement != null) {
                 try {
-                    psCheckUserExists.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            if (psInsert != null ){
-                try {
-                    psInsert.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            if (connection != null ){
-                try {
-                    connection.close();
+                    preparedStatement.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         }
+
+        return null;
     }
+
+    // Get ID by Email - Doctor
+    public static int getIdByEmail(String email) {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String getIdExistsQuery = "SELECT user_id FROM doctor WHERE email = ?";
+
+        DataBaseConnection connectNow = new DataBaseConnection();
+        Connection connectDB = connectNow.getDBConnection();
+
+        try {
+            preparedStatement = connectDB.prepareStatement(getIdExistsQuery);
+            preparedStatement.setString(1,email);
+            resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.isBeforeFirst()) {
+                System.out.println("Email not found in the database!");
+            } else {
+                while (resultSet.next()) {
+                    int retrieveId = resultSet.getInt("user_id");
+                    return retrieveId;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static ObservableList<Doctor> getDoctorList() {
+        ObservableList<Doctor> doctors = FXCollections.observableArrayList();
+        PreparedStatement preparedStatement = null;
+        ResultSet queryOutput = null;
+        String getDataQuery = "SELECT user_id, firstname, lastname, specialty FROM doctor";
+
+        DataBaseConnection connectNow = new DataBaseConnection();
+        Connection connectDB = connectNow.getDBConnection();
+
+        try {
+            preparedStatement = connectDB.prepareStatement(getDataQuery);
+//            preparedStatement.setString(1,"test");
+            queryOutput = preparedStatement.executeQuery();
+
+            while (queryOutput.next()) {
+                Integer queryID = queryOutput.getInt("user_id");
+                String queryFirstName = queryOutput.getString("firstname");
+                String queryLastName = queryOutput.getString("lastname");
+                String querySpecialty = queryOutput.getString("specialty");
+                Doctor newDoctor = new Doctor(queryID, queryFirstName, queryLastName, querySpecialty);
+                newDoctor.setFullName(queryFirstName + " " + queryLastName);
+                doctors.add(newDoctor);
+            }
+            return doctors;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (queryOutput != null) {
+                    queryOutput.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connectDB != null) {
+                    connectDB.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return doctors;
+    }
+
+
 }

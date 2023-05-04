@@ -7,9 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.hms_project_team_12.User.Doctor;
 import sample.hms_project_team_12.User.User;
+import sample.hms_project_team_12.util.AdminControllers;
+import sample.hms_project_team_12.util.Auth;
 import sample.hms_project_team_12.util.TemporaryPasswordGenerator;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -24,6 +25,8 @@ public class Admin_DoctorRegisterController implements Initializable {
     private Button btn_getDoctors;
     @FXML
     private Button btn_getPatients;
+    @FXML
+    private Button btn_getAssignments;
     @FXML
     private Button btn_logout;
 
@@ -56,8 +59,23 @@ public class Admin_DoctorRegisterController implements Initializable {
     @FXML
     private Label lable_password;
 
-
     String[] genderArray = {User.Gender.FEMALE.name(), User.Gender.MALE.name()};
+
+    public void onClickDoctorRegisterFieldsReset() {
+        tf_firstname.setText("");
+        tf_lastname.setText("");
+        tf_email.setText("");
+        tf_phone.setText("");
+        tf_nic.setText("");
+        tf_address.setText("");
+        tf_speciality.setText("");
+        tf_licenceNumber.setText("");
+        d_dateofbirth.setValue(LocalDate.parse("2000-01-01"));
+        cb_gender.setValue("");
+        lable_password.setText("");
+        btn_generatePassword.setText("Generate Password");
+        btn_generatePassword.setDisable(false);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -96,19 +114,7 @@ public class Admin_DoctorRegisterController implements Initializable {
         button_reset.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                tf_firstname.setText("");
-                tf_lastname.setText("");
-                tf_email.setText("");
-                tf_phone.setText("");
-                tf_nic.setText("");
-                tf_address.setText("");
-                tf_speciality.setText("");
-                tf_licenceNumber.setText("");
-                d_dateofbirth.setValue(LocalDate.parse("2000-01-01"));
-                cb_gender.setValue("");
-                lable_password.setText("");
-                btn_generatePassword.setText("Generate Password");
-                btn_generatePassword.setDisable(false);
+                onClickDoctorRegisterFieldsReset();
             }
         });
 
@@ -119,24 +125,9 @@ public class Admin_DoctorRegisterController implements Initializable {
 
                 boolean isRequiredEmpty = tf_firstname.getText().trim().isEmpty() && tf_nic.getText().trim().isEmpty() && tf_phone.getText().trim().isEmpty() && tf_speciality.getText().trim().isEmpty() && tf_licenceNumber.getText().trim().isEmpty() && cb_gender.getValue().isEmpty();
                 if(!tf_email.getText().trim().isEmpty() && !lable_password.getText().trim().isEmpty() && !isRequiredEmpty ){
-
-                    Date dateOfBirthSQL_Date = Date.valueOf(d_dateofbirth.getValue() != null ? d_dateofbirth.getValue().toString() : "1900-01-01");
-                    Doctor newDoctor = new Doctor(tf_firstname.getText(), tf_lastname.getText(), tf_address.getText(), tf_phone.getText(), tf_email.getText(), cb_gender.getValue(), dateOfBirthSQL_Date, tf_nic.getText(), User.AccountType.DOCTOR, tf_speciality.getText(), tf_licenceNumber.getText());
-                    Doctor.registerDoctor(event,newDoctor,lable_password.getText());
-
-                    tf_firstname.setText("");
-                    tf_lastname.setText("");
-                    tf_email.setText("");
-                    tf_phone.setText("");
-                    tf_nic.setText("");
-                    tf_address.setText("");
-                    tf_speciality.setText("");
-                    tf_licenceNumber.setText("");
-                    d_dateofbirth.setValue(LocalDate.parse("2000-01-01"));
-                    cb_gender.setValue("");
-                    lable_password.setText("");
-                    btn_generatePassword.setText("Generate Password");
-                    btn_generatePassword.setDisable(false);
+                    Doctor newDoctor = new Doctor(tf_firstname.getText(), tf_lastname.getText(), tf_address.getText(), tf_phone.getText(), tf_email.getText(), cb_gender.getValue(), Date.valueOf(d_dateofbirth.getValue()), tf_nic.getText(), User.AccountType.DOCTOR, tf_speciality.getText(), tf_licenceNumber.getText());
+                    Auth.registerDoctor(event,newDoctor,lable_password.getText());
+                    onClickDoctorRegisterFieldsReset();
 
                 } else {
                     System.out.println("Please fill in all information");
@@ -147,61 +138,17 @@ public class Admin_DoctorRegisterController implements Initializable {
             }
         });
 
+        // change scenes
+        AdminControllers adminControllers = new AdminControllers();
 
-        //scene builder
-        btn_createDoctor.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"admin_doctor-register-view.fxml","ABC Hospital - Admin");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        adminControllers.createDoctorButton(btn_createDoctor);
+        adminControllers.createPatientButton(btn_createPatient);
+        adminControllers.getDoctorsButton(btn_getDoctors);
+        adminControllers.getPatientButton(btn_getPatients);
+        adminControllers.getAppointmentsButton(btn_getAssignments);
 
-        btn_createPatient.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"admin_patient-register-view.fxml","ABC Hospital - Admin");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-
-        btn_getDoctors.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"admin_doctor-list-view.fxml","ABC Hospital - Admin");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-
-        btn_getPatients.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"admin_patient-list-view.fxml","ABC Hospital - Admin");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-
-        btn_logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    SceneController.switchScene(event,"hello-view.fxml","ABC Hospital - login");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        // logout
+        Auth auth = new Auth();
+        auth.onClickLogoutButton(btn_logout);
     }
 }

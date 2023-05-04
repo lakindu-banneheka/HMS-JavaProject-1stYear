@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.hms_project_team_12.User.Patient;
 import sample.hms_project_team_12.User.User;
+import sample.hms_project_team_12.util.Auth;
 
 import java.io.IOException;
 import java.net.URL;
@@ -68,7 +69,7 @@ public class SelfRegisterPatientController implements Initializable {
                     if(tf_password.getText().equals(tf_com_password.getText())){
                         Date dateOfBirthSQL_Date = Date.valueOf(d_dateofbirth.getValue() != null ? d_dateofbirth.getValue().toString() : "1900-01-01");
                         Patient patient = new Patient(tf_firstname.getText(), tf_lastname.getText(), tf_address.getText(), tf_phone.getText(), tf_email.getText(), cb_gender.getValue(), dateOfBirthSQL_Date, tf_nic.getText(), User.AccountType.PATIENT);
-                        Patient.registerPatient(event,patient,tf_password.getText());
+                        Auth.registerPatient(event,patient,tf_password.getText());
                     } else {
                         System.out.println("Please Re-enter the same password!");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
